@@ -5,6 +5,7 @@ import { Button } from "./components/Button"
 import { Input } from "./components/input"
 import { Letter } from "./components/Letter"
 import { Header } from "./components/Header"
+import { LettersUsed } from "./components/LettersUsed"
 
 export default function App() {
 
@@ -35,6 +36,8 @@ export default function App() {
          <Input autoFocus maxLength={1} placeholder="?" />
          <Button title="Confirmar" />
         </div>
+
+        <LettersUsed />
 
 
         </main>
