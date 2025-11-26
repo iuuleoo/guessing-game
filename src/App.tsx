@@ -1,6 +1,7 @@
 import styles from "./app.module.css"
 
 import { Tip } from "./components/tip"
+import { Input } from "./components/input"
 import { Letter } from "./components/Letter"
 import { Header } from "./components/Header"
 
@@ -21,6 +22,16 @@ export default function App() {
 
         <div className={styles.word}>
         <Letter value="" />
+        <Letter value="" />
+        <Letter value="" />
+        <Letter value="" />
+        <Letter value="" />
+        </div>
+
+        <h4>Palpite</h4>
+
+        <div>
+         <Input autoFocus maxLength={1} placeholder="?" />
         </div>
 
         </main>
