@@ -1,6 +1,7 @@
 import styles from "./app.module.css"
 
 import { Tip } from "./components/tip"
+import { Letter } from "./components/Letter"
 import { Header } from "./components/Header"
 
 export default function App() {
@@ -17,6 +18,10 @@ export default function App() {
 
         
         <Tip tip="Uma das Linguagem de programação mais utilizadas" />
+
+
+        <Letter value="" />
+        
         </main>
     </div>
   }
