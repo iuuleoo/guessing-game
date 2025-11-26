@@ -19,9 +19,10 @@ export default function App() {
         
         <Tip tip="Uma das Linguagem de programação mais utilizadas" />
 
-
+        <div className={styles.word}>
         <Letter value="" />
-        
+        </div>
+
         </main>
     </div>
   }
