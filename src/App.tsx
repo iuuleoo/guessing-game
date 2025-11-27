@@ -34,6 +34,9 @@ export default function App() {
         startGame()
     }, [])
 
+    if (!challenge) {
+        return null
+    }
 
 
 
@@ -45,11 +48,11 @@ export default function App() {
         <Tip tip="Uma das Linguagem de programação mais utilizadas" />
 
         <div className={styles.word}>
-        <Letter value="" />
-        <Letter value="" />
-        <Letter value="" />
-        <Letter value="" />
-        <Letter value="" />
+            {
+                challenge.word.split("").map(() => (
+                    <Letter value="" />
+                ))
+            }       
         </div>
 
         <h4>Palpite</h4>
