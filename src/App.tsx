@@ -8,15 +8,16 @@ import { Button } from "./components/Button"
 import { Input } from "./components/input"
 import { Letter } from "./components/Letter"
 import { Header } from "./components/Header"
-import { LettersUsed, LettersUsedProps } from "./components/LettersUsed"
+import { LettersUsed, type LettersUsedProps } from "./components/LettersUsed"
 
 export default function App() {
 
     const [attempts, setAttempts] = useState(0)
-    const [scoreScore] = useState(0)
     const [letter, setLetter] = useState("")
     const [challenge, setChallenge] = useState <Challenge | null>(null)
-    const [lettersUsed, setLettersUsed] = useState <LettersUsedProps []> ([])
+    const [lettersUsed, setLettersUsed] = useState <LettersUsedProps []> ([
+ 
+    ])
 
     function handleRestartGame() {
         alert("Reiniciar o jogo!")
@@ -30,6 +31,30 @@ export default function App() {
         setAttempts(0)
         setLetter("")
     }
+
+    function handleConfirm() {
+        if (!challenge) {
+            return
+        }
+
+        if (!letter.trim()) {
+            return alert ("Digite uma letra válida")
+        }
+
+        const value = letter.toUpperCase()
+        const exists = lettersUsed.find((used) => used.value.toUpperCase() === value)
+
+        if (exists) {
+            return alert ("Você já utilizou essa letra" + value )
+        }
+
+        setLettersUsed((prevState) => [...prevState, { value, correct: false}])
+
+        setLetter("")
+
+    }
+            
+            
 
     useEffect (() => {
         startGame()
@@ -50,7 +75,7 @@ export default function App() {
 
         <div className={styles.word}>
             {
-                challenge.word.split("").map(() => (
+                challenge?.word.split("").map(() => (
                     <Letter value="" />
                 ))
             }       
@@ -59,8 +84,8 @@ export default function App() {
         <h4>Palpite</h4>
 
         <div className={styles.guess}>
-         <Input autoFocus maxLength={1} placeholder="?" />
-         <Button title="Confirmar" />
+         <Input autoFocus maxLength={1} placeholder="?" value={letter} onChange={(e) => setLetter(e.target.value)}/>
+         <Button title="Confirmar" onClick={handleConfirm} />
         </div>
 
         <LettersUsed data={lettersUsed} />
